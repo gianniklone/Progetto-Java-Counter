@@ -16,13 +16,6 @@ Questa applicazione è un semplice contatore interattivo che permette agli utent
 - **CSS**: Per lo styling dell'applicazione.
 - **JavaScript**: Per la manipolazione del DOM, consentendo l'interazione con il contatore e l'aggiornamento dinamico dei valori.
 
-## Design e Colori
-
-Il design dell'applicazione è stato pensato per essere minimalista e facile da usare. I colori scelti sono i seguenti:
-
-- **Contatore**: Il contatore è di colore **beige chiaro** (`#F5F5DC`), che trasmette tranquillità e semplicità.
-- **Pulsanti**: I pulsanti **+**, **-** e **Azzera** sono di colore **beige più scuro** (`#D2B48C`), per un buon contrasto ma senza risultare troppo aggressivi.
-- **Sfondo della pagina**: Lo sfondo è di un beige leggermente più scuro (`#E1D9B7`), che crea una sensazione di comfort e calore.
 
 ## Istruzioni per l'uso
 
