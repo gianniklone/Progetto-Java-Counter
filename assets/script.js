@@ -1,3 +1,20 @@
+// Creazione funzione per creare elementi
+function creaElemento(tag, className = '', textContent = '', attributer = {}) {
+    const el = document.createElement(tag);
+
+    if (className) el.className = className;
+    if (textContent) el.textContent = textContent;
+
+    // Aggiunge attributi extra (id, type ecc)
+    for (let attr in attributer) {
+        el.setAttribute(attr, attributer[attr]);
+    } 
+    return el;
+}
+
+
+
+
 // Selezioniamo l'elemento principale dove inseriremo il  contatore
 const  app = document.getElementById('app');
 
@@ -5,54 +22,41 @@ const  app = document.getElementById('app');
 let contatore = 0;
 
 // Creazione del titolo e aggiungiamolo al dom
-const titolo = document.createElement('h1');
-titolo.textContent = 'Contatore';
-app.appendChild(titolo); 
+const titolo = creaElemento('h1','','Contatore');
+app.appendChild(titolo);
 
 // Creiamo gli elementi del contatore
-const counterDisplay = document.createElement('div');
-counterDisplay.id = 'counter';
-counterDisplay.textContent  = contatore;
+const counterDisplay = creaElemento('div','', contatore, {id:'contatore'});
+app.appendChild(counterDisplay)
 
 // Creazione del bottone "aumenta"
-const aumentaButton = document.createElement('button');
-aumentaButton.textContent = '-';
-aumentaButton.onclick = decrementaCounter;
+const decrementaButton = creaElemento('button','','-'.{'data-action':'decrementa'})
+const azzeraButton = creaElemento('button','','Azzera'.{'data-action':'azzera'})
+const aumentaButton = creaElemento('button','','+'.{'data-action':'incrementa'})
 
-// Creazione del bottone "azzera"
-const azzeraButton = document.createElement('button');
-azzeraButton.textContent = 'Azzera';
-azzeraButton.onclick = azzeraCounter;
 
-// Creazione del bottone "decrementa"
-const decrementaButton = document.createElement('button');
-decrementaButton.textContent= '+';
-decrementaButton.onclick = aumentaCounter;
-
-// Aggiunta elementi al DOM
-app.appendChild(counterDisplay);
 app.appendChild(aumentaButton);
 app.appendChild(azzeraButton);
 app.appendChild(decrementaButton);
 
 
-// Creazione funzione per aumentare il contatore
-function aumentaCounter() {
-    contatore++;
-    updateCounter();
-}
+app.addEventListener('click', function(event) {
+    const action= event.target.getAttribute('data-action');
 
-// Creazione funzione per azzerare il contatore
-function azzeraCounter() {
-    contatore = 0;
-    updateCounter();
-}
+    if (!action) return;
 
-// Creazione funzione per diminuire il contatore
-function decrementaCounter() {
-    contatore--;
-    updateCounter();
-}
+    if (action === 'incrementa') {
+        contatore++
+    } else if (action === 'azzera') {
+        contatore = 0;
+    } else if (action === 'decrementa') {
+        contatore--;
+    }
+    // Aggiorna il contatore
+    counterDisplay.textContent = contatore;
+});
+
+
 
 // Funzione per  aggiornare la pagina 
 function updateCounter() {
