@@ -30,9 +30,9 @@ const counterDisplay = creaElemento('div','', contatore, {id:'contatore'});
 app.appendChild(counterDisplay)
 
 // Creazione del bottone "aumenta"
-const decrementaButton = creaElemento('button','','-',{'data-action':'decrementa'})
+const decrementaButton = creaElemento('button','','+',{'data-action':'incrementa'})
 const azzeraButton = creaElemento('button','','Azzera',{'data-action':'azzera'})
-const aumentaButton = creaElemento('button','','+',{'data-action':'incrementa'})
+const aumentaButton = creaElemento('button','','-',{'data-action':'decrementa'})
 
 
 app.appendChild(aumentaButton);
